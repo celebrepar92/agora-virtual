@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-author: ["juan_perez", "maria_garcia"]
+authors: ["juan_perez", "maria_garcia"]
 date:   2026-01-09 03:34:34 -0300
 categories: jekyll update
 ---
