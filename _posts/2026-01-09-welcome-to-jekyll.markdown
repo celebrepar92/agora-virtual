@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "El Trabajo Social es el camino que elegimos para nuestro andar"
-author: "Estudiantes de Trabajo Social"
+authors: "Estudiantes de Trabajo Social"
 # authors: ["juan_perez", "maria_garcia"]
 date:   2025-12-10
 categories: reflexiones
