@@ -1,16 +1,22 @@
 ---
-# Solo los archivos con este "front matter" (guiones) son procesados por Jekyll
+# Front matter para que Jekyll procese el archivo
 ---
 
-// 1. Definir los colores personalizados
-$brand-color:    #8b0000; // Rojo oscuro (para el borde y enlaces)
-$background-color: #fff0f0; // Rosado muy claro (fondo)
-$border-color-dark: #8b0000; // Rojo oscuro para la línea superior
+// 1. Definir variables de color y estilo
+$brand-color:       #00008b; // Azul oscuro (DarkBlue)
+$background-color:  #e0f7fa; // Celeste claro
+$border-color-dark: #00008b; // Azul oscuro para la barra superior
 
-// 2. Importar el tema Minima (esto aplicará los cambios anteriores)
+// 2. Importar el tema Minima
 @import "minima";
 
-// 3. Ajuste específico para el borde superior del encabezado
+// 3. Personalizaciones adicionales
+.site-title {
+  font-weight: bold !important; // Título en negrita
+  color: $brand-color !important; // Título con el mismo azul que la barra
+  &:visited { color: $brand-color; }
+}
+
 .site-header {
-  border-top: 5px solid $border-color-dark;
+  border-top: 5px solid $border-color-dark; // Barra superior azul
 }
