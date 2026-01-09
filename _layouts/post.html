@@ -8,8 +8,7 @@ layout: default
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign m = page.date | date: "%-m" -%}
-        {{ page.date | date: "%-d" }}
-        &nbsp;de&nbsp;
+        {{ page.date | date: "%-d" }} de 
         {%- case m -%}
           {%- when '1' -%}enero
           {%- when '2' -%}febrero
@@ -23,8 +22,7 @@ layout: default
           {%- when '10' -%}octubre
           {%- when '11' -%}noviembre
           {%- when '12' -%}diciembre
-        {%- endcase -%}
-        &nbsp;de {{ page.date | date: "%Y" }}
+        {%- endcase -%} de {{ page.date | date: "%Y" }}
       </time>
 
       {% if page.authors %}
