@@ -3,7 +3,7 @@ layout: post
 title:  "El Trabajo Social es el camino que elegimos para nuestro andar"
 author: "Estudiantes de Trabajo Social"
 authors: ["juan_perez", "maria_garcia"]
-date:   2025-12-10
+date:   2025-12-10 17:00:00
 categories: reflexiones
 ---
 _El siguiente texto fue escrito por estudiantes de 5to año de la Licenciatura en Trabajo Social de la FHyCS-UNaM, agradecidos con sus profesores y compañerxs, que siempre tanto acompañaron y apoyaron nuestra formación._
