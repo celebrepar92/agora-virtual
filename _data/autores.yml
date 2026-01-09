@@ -1,0 +1,15 @@
+# agora-virtual/_data/autores.yml
+
+juan_perez:
+  nombre: "Juan Pérez"
+  bio: "Especialista en relaciones internacionales y analista de la República Popular Democrática de Corea."
+  web: "https://ejemplo.com/juan"
+
+maria_garcia:
+  nombre: "María García"
+  bio: "Investigadora académica con enfoque en sistemas políticos comparados."
+  twitter: "@mgarcia_edu"
+
+hong_gildong:
+  nombre: "Hong Gildong"
+  bio: "Escritor y colaborador residente en la RPDC."
