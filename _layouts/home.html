@@ -10,17 +10,34 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
-    <!-- <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2> -->
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
-        <!-- {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        <span class="post-meta">{{ post.date | date: date_format }}</span> -->
+        {% assign m = post.date | date: "%-m" %}
+        <span class="post-meta">
+          {{ post.date | date: "%-d" }} de 
+          {% case m %}
+            {% when '1' %}enero
+            {% when '2' %}febrero
+            {% when '3' %}marzo
+            {% when '4' %}abril
+            {% when '5' %}mayo
+            {% when '6' %}junio
+            {% when '7' %}julio
+            {% when '8' %}agosto
+            {% when '9' %}septiembre
+            {% when '10' %}octubre
+            {% when '11' %}noviembre
+            {% when '12' %}diciembre
+          {% endcase %} de {{ post.date | date: "%Y" }}
+        </span>
+
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
             {{ post.title | escape }}
           </a>
         </h3>
+        
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%}
@@ -28,5 +45,4 @@ layout: default
       {%- endfor -%}
     </ul>
   {%- endif -%}
-
 </div>
