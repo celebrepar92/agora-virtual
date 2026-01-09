@@ -3,7 +3,11 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    
+    <div class="site-brand">
+      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+      <p class="site-description">Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM</p>
+    </div>
 
     {%- if page_paths -%}
       <nav class="site-nav">
@@ -28,3 +32,25 @@
     {%- endif -%}
   </div>
 </header>
+
+<style>
+  .site-brand {
+    float: left;
+  }
+  .site-description {
+    color: #828282; /* Gris característico de Minima */
+    font-size: 0.9em;
+    font-style: italic;
+    margin-top: -15px; /* Ajuste para que quede pegado al título */
+    margin-bottom: 10px;
+    clear: both;
+  }
+  /* Ajuste para dispositivos móviles */
+  @media screen and (max-width: 600px) {
+    .site-description {
+      margin-top: -5px;
+      line-height: 1.2;
+      padding-right: 40px; /* Evita que choque con el menú hamburguesa */
+    }
+  }
+</style>
