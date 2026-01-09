@@ -2,7 +2,7 @@
 layout: post
 title:  "El Trabajo Social es el camino que elegimos para nuestro andar"
 author: "Estudiantes de Trabajo Social"
-# authors: ["juan_perez", "maria_garcia"]
+authors: ["juan_perez", "maria_garcia"]
 date:   2025-12-10
 categories: reflexiones
 ---
@@ -14,7 +14,7 @@ Porque el Trabajo Social es sentir, querer, hacer, estar, escuchar, acompañar, 
 
 El Trabajo Social es encontrarnos siempre con nuestra propia lucha interna, porque nos interpela de pies a cabeza, porque nos obliga a lidiar con el miedo de cómo actuar contra cuestiones que quizás nos tocan internamente, en la inseguridad de dar un paso en falso ante esa persona o comunidad que siempre está esperando de nosotros, en el posicionamiento que tanto a veces nos cuesta, en poder poner en palabras lo que a veces nos choca con cada salida a territorio, en poder comprender que también estamos atravesados por el contexto y que, por lo tanto, estamos obligados a hacerle frente y encontrarle la vuelta.
 
-El Trabajo Social nos encuentra siempre con un otro, en cosas a veces sensibles, a veces sencillas, pero siempre es con un otro. Por eso decimos que es colectivo, es una lucha que nos sostiene y que nos da herramientas para mantenernos así. El trabajo social nos marca, quizás de por vida, porque es el camino que elegimos para nuestro andar, y es un camino que trae millones de desafíos, y tantas puertas que se cierran como puertas que se abren. Es encontrarnos con la labor de poder tejer redes, reconstruir lazos, brindar espacios seguros, crear puentes entre lo imposible y lo posible, pero siempre acordándonos que el Trabajo Social, ante todo, nos construye con un solo objetivo: para construir con el otro.
+El Trabajo Social nos encuentra siempre con un otro, en cosas a veces sensibles, a veces sencillas, pero siempre es con un otro. Por eso decimos que es colectivo, es una lucha que nos sostiene y que nos da herramientas para mantenernos así. El Trabajo Social nos marca, quizás de por vida, porque es el camino que elegimos para nuestro andar, y es un camino que trae millones de desafíos, y tantas puertas que se cierran como puertas que se abren. Es encontrarnos con la labor de poder tejer redes, reconstruir lazos, brindar espacios seguros, crear puentes entre lo imposible y lo posible, pero siempre acordándonos que el Trabajo Social, ante todo, nos construye con un solo objetivo: para construir con el otro.
 
 El Trabajo Social nos enseñó a ir siempre por el camino de las fortalezas, aunque a veces se torne difícil, pero lo que más nos deja es la huella de la resistencia ante la indiferencia de una sociedad contemporánea tan polarizada. Es un constante llamado inclaudicable a la empatía y la esperanza; una huella marcada en el corazón y para toda la vida, originada en un recorrido formativo que se hizo largo al andar, pero que nos deja mucho aún por descubrir y aprender.
 
