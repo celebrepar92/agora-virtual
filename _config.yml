@@ -29,6 +29,8 @@ url: "https://celebrepar92.github.io" # the base hostname & protocol for your si
 twitter_username: jekyllrb
 github_username:  jekyll
 
+lang: "es-ES"
+
 # Build settings
 theme: minima
 plugins:
