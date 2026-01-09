@@ -1,18 +1,20 @@
-<header class="site-header" role="banner">
+<header class="site-header" role="banner" style="border-top: 5px solid #00008b; padding: 20px 0; min-height: 100px;">
+  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+    
+    <div class="site-branding" style="flex: 1; min-width: 300px; padding-right: 20px;">
+      <a class="site-title" rel="author" href="{{ "/" | relative_url }}" style="font-weight: bold !important; color: #00008b !important; font-size: 26px; letter-spacing: -1px; display: block; margin-bottom: 8px; text-decoration: none;">
+        {{ site.title | escape }}
+      </a>
+      <p style="margin: 0; font-size: 14px; color: #828282; font-style: italic; line-height: 1.4; max-width: 550px;">
+        Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM
+      </p>
+    </div>
 
-  <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
     
-    <div class="site-title-container">
-      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-      <span class="site-description-custom">
-        Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM
-      </span>
-    </div>
-
     {%- if page_paths -%}
-      <nav class="site-nav">
+      <nav class="site-nav" style="line-height: 2.2;">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -26,7 +28,7 @@
           {%- for path in page_paths -%}
             {%- assign my_page = site.pages | where: "path", path | first -%}
             {%- if my_page.title -%}
-            <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+            <a class="page-link" href="{{ my_page.url | relative_url }}" style="font-weight: 400; color: #111;">{{ my_page.title | escape }}</a>
             {%- endif -%}
           {%- endfor -%}
         </div>
