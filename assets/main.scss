@@ -1,22 +1,36 @@
-/*---
-# Front matter para que Jekyll procese el archivo
+---
+# Front matter
 ---
 
-// 1. Definir variables de color y estilo
-$brand-color:       #00008b; // Azul oscuro (DarkBlue)
-$background-color:  #e0f7fa; // Celeste claro
-$border-color-dark: #00008b; // Azul oscuro para la barra superior
-
-// 2. Importar el tema Minima
 @import "minima";
 
-// 3. Personalizaciones adicionales
+// Contenedor del título para que acepte elementos al lado
 .site-title {
-  font-weight: bold !important; // Título en negrita
-  color: $brand-color !important; // Título con el mismo azul que la barra
-  &:visited { color: $brand-color; }
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap; // Por si el texto es muy largo en móviles
+  gap: 15px; // Espacio entre el título y la descripción
+  font-weight: bold !important;
+  color: #00008b !important; // Tu azul oscuro
 }
 
-.site-header {
-  border-top: 5px solid $border-color-dark; // Barra superior azul
-} */
+// El nuevo texto descriptivo
+.site-title::after {
+  content: "Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM";
+  font-size: 0.45em; // Tamaño más pequeño para que no compita con el título
+  font-weight: normal;
+  font-style: italic;
+  color: #828282; // Gris clásico de Minima
+  letter-spacing: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+// Ajuste para que en móviles no se vea amontonado
+@media screen and (max-width: 600px) {
+  .site-title::after {
+    display: block;
+    margin-top: -10px;
+    line-height: 1.2;
+  }
+}

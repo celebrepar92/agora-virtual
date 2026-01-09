@@ -7,32 +7,6 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
-  <div class="repo-banner">
-  <div class="wrapper">
-    Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM
-  </div>
-</div>
-
-<style>
-  .repo-banner {
-    /* Fondo gris claro y 100% de ancho */
-    background-color: #f5f5f5; 
-    border-bottom: 1px solid #e8e8e8;
-    width: 100%;
-    margin-top: -30px; /* Ajuste para que pegue al header */
-    margin-bottom: 30px;
-    padding: 10px 0;
-  }
-
-  .repo-banner .wrapper {
-    /* Alinea el texto con el título y el contenido */
-    color: #828282;
-    font-size: 0.95em;
-    font-style: italic;
-    text-align: left;
-  }
-</style>
-
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
