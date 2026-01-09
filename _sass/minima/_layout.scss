@@ -127,6 +127,7 @@
   color: $grey-color;
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
+  font-size: 12px !important;
 }
 
 .footer-col {
