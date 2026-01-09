@@ -3,11 +3,7 @@
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    
-    <div class="site-brand">
-      <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
-      <p class="site-description">Repositorio independiente de escritos y reflexiones colectivas de estudiantes de la Licenciatura en Trabajo Social (FHyCS-UNaM)</p>
-    </div>
+    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
 
     {%- if page_paths -%}
       <nav class="site-nav">
@@ -31,26 +27,37 @@
       </nav>
     {%- endif -%}
   </div>
+
+  <div class="header-description-box">
+    <div class="wrapper">
+      <p class="description-text">Repositorio independiente de escritos y reflexiones colectivas de estudiantes de la Licenciatura en Trabajo Social (FHyCS-UNaM)</p>
+    </div>
+  </div>
 </header>
 
 <style>
-  .site-brand {
-    float: left;
-  }
-  .site-description {
-    color: #828282; /* Gris característico de Minima */
-    font-size: 0.9em;
-    font-style: italic;
-    margin-top: -17px; /* Ajuste para que quede pegado al título */
-    margin-bottom: 10px;
+  .header-description-box {
+    background-color: #f7f7f7; /* Fondo gris muy claro alineado con tablas de Minima */
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px 0;
     clear: both;
   }
-  /* Ajuste para dispositivos móviles */
+
+  .description-text {
+    color: #828282; /* Gris de texto secundario en Minima */
+    font-size: 14px; /* Más pequeño que el cuerpo principal */
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Ajuste para evitar amontonamiento con el título en móviles */
   @media screen and (max-width: 600px) {
-    .site-description {
-      margin-top: -5px;
-      line-height: 1.2;
-      padding-right: 40px; /* Evita que choque con el menú hamburguesa */
+    .site-header {
+      min-height: auto;
+    }
+    .description-text {
+      font-size: 13px;
     }
   }
 </style>
