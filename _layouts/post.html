@@ -8,31 +8,43 @@ layout: default
     <p class="post-meta">
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {%- assign m = page.date | date: "%-m" -%}
-        {{ page.date | date: "%-d" }} de 
+        {{ page.date | date: "%-d" }}
+        &nbsp;de&nbsp;
         {%- case m -%}
-          {%- when '1' -%} enero
-          {%- when '2' -%} febrero
-          {%- when '3' -%} marzo
-          {%- when '4' -%} abril
-          {%- when '5' -%} mayo
-          {%- when '6' -%} junio
-          {%- when '7' -%} julio
-          {%- when '8' -%} agosto
-          {%- when '9' -%} septiembre
-          {%- when '10' -%} octubre
-          {%- when '11' -%} noviembre
-          {%- when '12' -%} diciembre
+          {%- when '1' -%}enero
+          {%- when '2' -%}febrero
+          {%- when '3' -%}marzo
+          {%- when '4' -%}abril
+          {%- when '5' -%}mayo
+          {%- when '6' -%}junio
+          {%- when '7' -%}julio
+          {%- when '8' -%}agosto
+          {%- when '9' -%}septiembre
+          {%- when '10' -%}octubre
+          {%- when '11' -%}noviembre
+          {%- when '12' -%}diciembre
         {%- endcase -%}
-        de {{ page.date | date: "%Y" }}
+        &nbsp;de {{ page.date | date: "%Y" }}
       </time>
 
       {% if page.authors %}
         <br>
         <span>
-          Por: 
+          Por 
+          {% assign cantidad = page.authors | size %}
           {% for autor_id in page.authors %}
             {% assign autor = site.data.autores[autor_id] %}
-            <span class="p-author h-card"><strong>{{ autor.nombre }}</strong></span>{% unless forloop.last %}, {% endunless %}
+            <span class="p-author h-card">{{ autor.nombre }}</span>
+            
+            {% if cantidad == 2 and forloop.index == 1 %}
+               y 
+            {% elsif cantidad > 2 %}
+              {% if forloop.index < forloop.length | minus: 1 %}
+                , 
+              {% elsif forloop.index == forloop.length | minus: 1 %}
+                , y 
+              {% endif %}
+            {% endif %}
           {% endfor %}
         </span>
       {% endif %}
