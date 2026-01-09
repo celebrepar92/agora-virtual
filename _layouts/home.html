@@ -7,6 +7,24 @@ layout: default
     <h1 class="page-heading">{{ page.title }}</h1>
   {%- endif -%}
 
+  <div class="repo-description">
+  Repositorio independiente de escritos y reflexiones de estudiantes de la Licenciatura en Trabajo Social, FHyCS-UNaM
+  </div>
+
+<style>
+  .repo-description {
+    background-color: #f5f5f5; /* Gris claro típico de Minima */
+    border-bottom: 1px solid #e8e8e8;
+    color: #828282; /* El color de texto secundario de Minima */
+    padding: 10px 20px;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: -30px; /* Ajuste para pegarse al header */
+    margin-bottom: 40px;
+    font-style: italic;
+  }
+</style>
+
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
@@ -14,27 +32,6 @@ layout: default
     <ul class="post-list">
       {%- for post in site.posts -%}
       <li>
-        <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign m = page.date | date: "%-m" -%}
-        {{ page.date | date: "%-d" }}
-        &nbsp;de&nbsp;
-        {%- case m -%}
-          {%- when '1' -%}enero
-          {%- when '2' -%}febrero
-          {%- when '3' -%}marzo
-          {%- when '4' -%}abril
-          {%- when '5' -%}mayo
-          {%- when '6' -%}junio
-          {%- when '7' -%}julio
-          {%- when '8' -%}agosto
-          {%- when '9' -%}septiembre
-          {%- when '10' -%}octubre
-          {%- when '11' -%}noviembre
-          {%- when '12' -%}diciembre
-        {%- endcase -%}
-        &nbsp;de {{ page.date | date: "%Y" }}
-      </time>
-
         <!-- {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span> -->
         <h3>
