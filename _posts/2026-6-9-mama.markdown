@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "'Carta de mamá'"
+# author: "Estudiantes de Trabajo Social"
+authors: ["rodrigo_petryla"]
+date:   2026-6-9
+categories: reflexiones
+---
+![Image](https://www.artforum.com/wp-content/uploads/2024/04/new-Lettre-De-Ma-Mere-Letter-from-my-Mother_Vera-Molnar.jpg)
+
+
