@@ -207,7 +207,7 @@
   display: block;
   @include relative-font-size(1.5);
   color: #000000;
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
 
   &:hover {
@@ -230,7 +230,7 @@
   letter-spacing: -1px;
   line-height: 1;
   color: #000000;
-  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
 
   @include media-query($on-laptop) {
@@ -270,7 +270,7 @@
 
 .post-content {
   margin-bottom: $spacing-unit;
-  color: #000000; /* Todo el cuerpo en negro absoluto */
+  color: #000000;
 
   /* Subtítulos dentro de la nota */
   h2, h3, h4 {
