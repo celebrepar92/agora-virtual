@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Herramientas útiles para la investigación cualitativa"
+title:  "Herramientas útiles para el análisis cualitativo y el TFG"
 author: "Cátedra de Taller TFG"
 # authors: "["rodrigo_petryla"]"
 date:   2026-6-24
