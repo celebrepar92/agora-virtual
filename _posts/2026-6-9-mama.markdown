@@ -12,7 +12,7 @@ permalink: herramientas
 * TOC
 {:toc}
 ### Introducción
-En Trabajo Social, los procesos de investigación e intervención cualitativa suelen verse entorpecidos por tareas mecánicas y repetitivas (como la gestión de citas APA y el control de versiones) que generan cuellos de botella y sobrecargan el esfuerzo intelectual. Dado que estas labores operativas no forman parte directa de la producción de conocimiento, identificarlas resulta crucial para facilitar el trabajo del trabajador social. Al ser procedimientos sistemáticos, es posible corregirlos o automatizarlos mediante herramientas específicas, liberando así tiempo valioso para los aspectos importantes de la investigación o intervención.
+En Trabajo Social, los procesos de investigación e intervención cualitativa suelen verse entorpecidos por tareas mecánicas y repetitivas (como la gestión de citas APA y el control de versiones) que generan cuellos de botella y sobrecargan el esfuerzo intelectual. Dado que estas labores operativas no forman parte directa de la producción de conocimiento, identificarlas resulta crucial para facilitar la labor del trabajador social. Al ser procedimientos sistemáticos, es posible corregirlos o automatizarlos mediante herramientas específicas, liberando así tiempo valioso para los aspectos importantes de la investigación o intervención.
 
 La siguiente es una lista de algunas de las herramientas útiles para este propósito. Las dividiremos en herramientas de gestión bibliográfica, herramientas de análisis cualitativo, y herramientas técnicas. Estas últimas, si bien son muy capaces y poderosas, tienen una curva de aprendizaje mucho más pronunciada que las demás.
 
