@@ -133,6 +133,8 @@
   float: left;
   margin-bottom: $spacing-unit / 2;
   padding-left: $spacing-unit / 2;
+
+  img{ border: 0px solid none; }
 }
 
 .footer-col-1 {
@@ -230,8 +232,10 @@
   letter-spacing: -1px;
   line-height: 1;
   color: #000000;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Arial", sans-serif;
+  font-optical-sizing: auto;
   font-weight: bold;
+  font-size: 26px !important;
 
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
@@ -242,6 +246,12 @@
   display: block;
   @include relative-font-size(1.5);
   font-weight: bold;
+
+  font-family: "Arial", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-size: 26px !important;
+  line-height: 120%;
 
   /* Forzar negro absoluto siempre (evita el azul por defecto de Minima) */
   &, &:visited {
