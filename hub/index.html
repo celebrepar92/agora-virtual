@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hub - Directorio de herramientas</title>
+  <!-- Tipografía elegante y limpia (Inter / System UI fallback) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #FAFAFA;
+      --text-main: #111111;
+      --text-muted: #757575;
+      --border-color: #E5E5E5;
+      --hover-bg: #F0F0F0;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER EDITORIAL */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 2px solid var(--text-main);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .brand h1 {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    img{border-radius: 3px;}
+
+    .brand p {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .system-status {
+      font-size: 0.8125rem;
+      font-family: monospace;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* BARRA DE BÚSQUEDA Y FILTROS */
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 1rem;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--text-main);
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      background: none;
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1.2rem;
+      font-family: inherit;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--text-main);
+      color: var(--bg);
+      border-color: var(--text-main);
+    }
+
+    /* DIRECTORY TABLE / LIST */
+    .directory-header {
+      display: grid;
+      grid-template-columns: 2.5rem 2fr 1fr 3fr 120px;
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--text-main);
+    }
+
+    .directory-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .directory-item {
+        position: relative; /* Indispensable para extender el link a toda la fila */
+        display: grid;
+        grid-template-columns: 2.5rem 2fr 1fr 3fr 120px;
+        align-items: center;
+        padding: 1.25rem 1rem;
+        border-bottom: 1px solid var(--border-color);
+        transition: background-color 0.15s ease;
+        font-size: 0.9375rem;
+        }
+
+    .directory-item:hover {
+      background-color: var(--hover-bg);
+    }
+
+    .item-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .item-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .item-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-main);
+    }
+
+    .item-title {
+      font-weight: 500;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .item-badge {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.4rem;
+      border: 1px solid var(--text-main);
+      font-weight: 400;
+    }
+
+    .item-type {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .item-desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      padding-right: 1.5rem;
+    }
+
+       /* Extiende la zona interactiva del link a toda la fila */
+        .item-action a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        }
+
+    .item-action a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--text-main);
+      padding-bottom: 2px;
+      transition: opacity 0.2s ease;
+    }
+
+    .item-action a:hover {
+      opacity: 0.5;
+    }
+
+    .empty-state {
+      padding: 4rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9375rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 850px) {
+      .directory-header {
+        display: none;
+      }
+
+      .directory-item {
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0.5rem;
+        padding: 1.5rem 0.5rem;
+      }
+
+      .item-type, .item-desc {
+        grid-column: 2 / -1;
+      }
+
+      .item-action {
+        grid-column: 2 / -1;
+        margin-top: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <h1>Hub</h1>
+      <p>Directorio de herramientas</p>
+    </div>
+    <div class="system-status">
+      <span id="item-count">0 items</span>
+    </div>
+  </header>
+
+  <!-- CONTROLES -->
+  <section class="controls">
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Buscar por nombre o descripción..." aria-label="Buscar herramientas" autocomplete="off">
+    </div>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="extension">Extensiones</button>
+      <button class="filter-btn" data-filter="web">Webs</button>
+      <button class="filter-btn" data-filter="software">Software</button>
+      <button class="filter-btn" data-filter="own">Propias</button>
+    </div>
+  </section>
+
+  <!-- DIRECTORY LIST -->
+  <main>
+    <div class="directory-header">
+      <span></span>
+      <span>Nombre</span>
+      <span>Tipo</span>
+      <span>Descripción</span>
+      <span>Acción</span>
+    </div>
+
+    <div class="directory-list" id="directory-list">
+      <!-- Los ítems se insertan mediante JS -->
+    </div>
+  </main>
+
+  <script>
+    /* ==========================================================================
+       CONFIGURACIÓN / DATA (AQUÍ AGREGAS O QUITAN TUS HERRAMIENTAS)
+       ========================================================================== */
+    const ITEMS = [
+      {
+        name: "Uppercase",
+        type: "extension", // 'extension' o 'web'
+        isOwn: true,       // true si es tuya, false si es de terceros
+        desc: "Convierte texto a mayúsculas, lo copia y guarda historial",
+        url: "https://chromewebstore.google.com/detail/uppercase/fgdocjbfdpdlgdmnidmgkihbompbkoek",
+        actionText: "Descargar", // o "Visitar"
+        iconSvg: `<img src="https://lh3.googleusercontent.com/MYi70tOMU1GO8eHfcjmZIgTugdsqtztDxE9IBIx5FuuN7-W31-etb6Su4Jzk7eAWxsMrJ5y0q6cFX3Uh03xsZDnQHAc=s120"/>`
+      },
+      {
+        name: "Descript",
+        type: "web",
+        isOwn: false,
+        desc: "Edición de audio y video basada en texto y voz artificial",
+        url: "https://web.descript.com",
+        actionText: "Visitar",
+        iconSvg: `<img src="https://images.g2crowd.com/uploads/product/image/large_detail/large_detail_01b9db6ab3f51ab19152816d5fd4b54d/descript.png">`
+      },
+      {
+        name: "Stalin Blur",
+        type: "web",
+        isOwn: true,
+        desc: "Cambiar tamaño de imágenes y añadir blur",
+        url: "https://stalinblur.netlify.app/",
+        actionText: "Visitar",
+        iconSvg: `<img src="https://stalinblur.netlify.app/favicon.png">`
+      },
+      {
+        name: "WhatsApp",
+        type: "web",
+        isOwn: false,
+        desc: "Mensajería instantánea",
+        url: "https://web.whatsapp.com",
+        actionText: "Visitar",
+        iconSvg: `<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/WhatsApp_Logo_green.svg/250px-WhatsApp_Logo_green.svg.png">`
+      },
+      {
+        name: "Volume Master",
+        type: "extension",
+        isOwn: false,
+        desc: "Controlador de volumen",
+        url: "https://chromewebstore.google.com/detail/volume-master/jghecgabfgfdldnmbfkhmffcabddioke?hl=es",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://lh3.googleusercontent.com/KVGRNfHgQNl3RtCAnq4bTHM23198SfyCES7LnrxnSp21B5xQ2WKRLpIMxaPSYYH0Xp99auk5OQQ6QHjpOL3OvqUi=s120">`
+      },
+      {
+        name: "GoFullPage",
+        type: "extension",
+        isOwn: false,
+        desc: "Captura de pantalla completa",
+        url: "https://chromewebstore.google.com/detail/gofullpage-full-page-scre/fdpohaocaechififmbbbbbknoalclacl?hl=es",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://lh3.googleusercontent.com/xkq24Y-hSgJHCOs7hskeMNfZatMQYRmybkMY8gGrzHTYVJiQR_2un6xgg9cXY93ShVNU5LdC7n5fddtbQxeNIV0hma8=s120">`
+      },
+      {
+        name: "Cropstar",
+        type: "web",
+        isOwn: true,
+        desc: "Recortar imágenes rápidamente",
+        url: "https://cropstar39.netlify.app/",
+        actionText: "Visitar",
+        iconSvg: `<img src="https://cropstar39.netlify.app/favicon.png">`
+      },
+      {
+        name: "Cooke",
+        type: "web",
+        isOwn: true,
+        desc: "Desgrabador y refritador de entrevistas y notas periodísticas",
+        url: "https://cookeaudio.netlify.app/",
+        actionText: "Visitar",
+        iconSvg: `<img src="https://cookeaudio.netlify.app/favicon.png">`
+      },
+      {
+        name: "Cooke JSON",
+        type: "extension",
+        isOwn: true,
+        desc: "Inserta JSON de Cooke en WordPress de MOL",
+        url: "https://drive.google.com/file/d/1iAQrxKnshbzncy-HN3emDF2ySFr4hjMY/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://i.ibb.co/wZQnF31v/icon.png">`
+      },
+      {
+        name: "Eventario",
+        type: "web",
+        isOwn: true,
+        desc: "Generador de HTML para agenda de #ElFinde",
+        url: "https://eventario49.netlify.app/",
+        actionText: "Descargar",
+        iconSvg: `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%231a1aff'/><rect x='14' y='18' width='36' height='5' rx='2.5' fill='white'/><rect x='14' y='30' width='28' height='5' rx='2.5' fill='white' opacity='.7'/><rect x='14' y='42' width='20' height='5' rx='2.5' fill='white' opacity='.4'/></svg>`
+      },
+      {
+        name: "Amadeus",
+        type: "extension",
+        isOwn: true,
+        desc: "Convertidor de comillas en smart quotes",
+        url: "https://drive.google.com/file/d/11ZBXK8qEO7nVP_gZOPfFr2Obj2mXBBBm/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://i.ibb.co/JwtvhMP8/icon.png">`
+      },
+      {
+        name: "Tagg",
+        type: "extension",
+        isOwn: true,
+        desc: "Generador de etiquetas en base al contenido de una web",
+        url: "https://drive.google.com/file/d/1_aZNVpefJWl5IYBVWDMd1XJ_hpu-X9dd/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://i.ibb.co/4R91DmWv/icon128.png">`
+      },
+      {
+        name: "Copied",
+        type: "extension",
+        isOwn: true,
+        desc: "Guardado de texto para copiarlo rápidamente",
+        url: "https://drive.google.com/file/d/1PLUyfK_CYay2Yqq2of-KmE8pgDHvNEkG/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://i.ibb.co/k6J3T3Gz/icon.png">`
+      },
+      {
+        name: "Videostar PC",
+        type: "software",
+        isOwn: true,
+        desc: "Creador de inserts",
+        url: "https://drive.google.com/file/d/1PLUyfK_CYay2Yqq2of-KmE8pgDHvNEkG/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://github.com/celebrepar92/videostar/blob/main/favicon.png?raw=true">`
+      },
+      {
+        name: "Superman",
+        type: "extension",
+        isOwn: true,
+        desc: "Descarga de imágenes con blur automático",
+        url: "https://drive.google.com/file/d/1PLUyfK_CYay2Yqq2of-KmE8pgDHvNEkG/view?usp=sharing",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://i.ibb.co/LXWFgxxK/icon.png">`
+      },
+      {
+        name: "LosslessCut",
+        type: "software",
+        isOwn: false,
+        desc: "Cortador de videos",
+        url: "https://losslesscut.app/",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://store-images.s-microsoft.com/image/apps.2506.14552290146819127.85c1fb6e-61cd-4382-af66-c26b7e6ecb7c.0bbfbc99-22ad-4156-8754-6b6f032ac387">`
+      },
+      {
+        name: "fre:ac",
+        type: "software",
+        isOwn: false,
+        desc: "Convertidor de audio",
+        url: "https://www.freac.org/",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://store-images.s-microsoft.com/image/apps.42951.14503093534494383.e2467dba-f56e-415f-b0d1-bae553a0acd4.e3dfbe7a-78e2-4435-b877-274737af5255">`
+      },
+      {
+        name: "Everything",
+        type: "software",
+        isOwn: false,
+        desc: "Buscador global e instantáneo de archivos y carpetas",
+        url: "https://www.voidtools.com/es-es/",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://tweakers.net/ext/i/2007841748.png">`
+      },
+      {
+        name: "LocalSend",
+        type: "software",
+        isOwn: false,
+        desc: "Compartir archivos con dispositivos cercanos",
+        url: "https://localsend.org/es/",
+        actionText: "Descargar",
+        iconSvg: `<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5eKdx5dPtnt7GgZGnMxtsD_YBh6m0Yg-BBVKTdkFPpg&s">`
+      }
+    ];
+
+    /* ==========================================================================
+       LÓGICA DEL RENDERIZADO Y FILTROS
+       ========================================================================== */
+    const listContainer = document.getElementById('directory-list');
+    const searchInput = document.getElementById('search-input');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const itemCount = document.getElementById('item-count');
+
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    function render() {
+  const filtered = ITEMS.filter(item => {
+    // Filtrado por categoría
+    let matchesFilter = false;
+    if (currentFilter === 'all') matchesFilter = true;
+    else if (currentFilter === 'extension') matchesFilter = item.type === 'extension';
+    else if (currentFilter === 'web') matchesFilter = item.type === 'web';
+    else if (currentFilter === 'own') matchesFilter = item.isOwn === true;
+    else if (currentFilter === 'software') matchesFilter = item.type === 'software';
+
+    // Filtrado por texto
+    const query = searchQuery.toLowerCase();
+    const matchesSearch = item.name.toLowerCase().includes(query) || 
+                          item.desc.toLowerCase().includes(query);
+
+    return matchesFilter && matchesSearch;
+  });
+
+  // ORDENAMIENTO ALFABÉTICO POR NOMBRE (A - Z)
+  filtered.sort((a, b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
+
+  itemCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'item' : 'items'}`;
+
+  if (filtered.length === 0) {
+    listContainer.innerHTML = `<div class="empty-state">No se encontraron herramientas que coincidan.</div>`;
+    return;
+  }
+
+  listContainer.innerHTML = filtered.map(item => `
+    <div class="directory-item">
+      <div class="item-icon">${item.iconSvg || ''}</div>
+      <div class="item-title">
+        ${item.name}
+        ${item.isOwn ? `<span class="item-badge">Propia</span>` : ''}
+      </div>
+      <div class="item-type">${item.type}</div>
+      <div class="item-desc">${item.desc}</div>
+      <div class="item-action">
+        <a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.actionText}</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+    // Listeners
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      render();
+    });
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    // Render Inicial
+    render();
+  </script>
+</body>
+</html>
