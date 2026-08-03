@@ -1,48 +1,61 @@
 ---
 layout: default
 ---
-
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+  <div class="agora-bg"></div>
+
+  <h1 class="agora-title">Ágora Virtual</h1>
 
   {{ content }}
-
-  {%- if site.posts.size > 0 -%}
-    <ul class="post-list">
-      {%- for post in site.posts -%}
-      <li>
-        {% assign m = post.date | date: "%-m" %}
-        <span class="post-meta">
-          {{ post.date | date: "%-d" }} de 
-          {% case m %}
-            {% when '1' %}enero {% when '2' %}febrero {% when '3' %}marzo {% when '4' %}abril {% when '5' %}mayo {% when '6' %}junio {% when '7' %}julio {% when '8' %}agosto {% when '9' %}septiembre {% when '10' %}octubre {% when '11' %}noviembre {% when '12' %}diciembre
-          {% endcase %} de {{ post.date | date: "%Y" }}
-
-          {% if post.author or post.authors %}
-            • Por 
-            {% if post.authors %}
-              {% assign cantidad = post.authors | size %}
-              {% for autor_id in post.authors %}
-                {% assign autor = site.data.autores[autor_id] %}
-                {{ autor.nombre }}{% if cantidad == 2 and forloop.index == 1 %} y {% elsif cantidad > 2 %}{% if forloop.index < forloop.length | minus: 1 %}, {% elsif forloop.index == forloop.length | minus: 1 %}, y {% endif %}{% endif %}
-              {% endfor %}
-            {% else %}
-              {{ post.author }}
-            {% endif %}
-          {% endif %}
-        </span>
-
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        
-        {{ post.content }}
-      </li>
-      {%- endfor -%}
-    </ul>
-  {%- endif -%}
 </div>
+
+<style>
+  .home {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Fondo animado con greca griega */
+  .agora-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background-image:
+      linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
+      repeating-linear-gradient(
+        90deg,
+        #b08d57 0px, #b08d57 4px,
+        transparent 4px, transparent 8px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        #b08d57 0px, #b08d57 4px,
+        transparent 4px, transparent 8px
+      );
+    background-size: 100% 100%, 48px 48px, 48px 48px;
+    opacity: 0.15;
+    animation: agora-drift 40s linear infinite;
+  }
+
+  @keyframes agora-drift {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to   { background-position: 0 0, 480px 0, 0 480px; }
+  }
+
+  .agora-title {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 3rem auto 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Reduce el movimiento si el usuario lo prefiere */
+  @media (prefers-reduced-motion: reduce) {
+    .agora-bg {
+      animation: none;
+    }
+  }
+</style>
