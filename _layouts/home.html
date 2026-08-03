@@ -1,24 +1,23 @@
 ---
-layout: default
+layout: home
 hide_chrome: true
 ---
 <div class="agora-bg"></div>
 
 <div class="home">
   <h1 class="agora-title">Ágora Virtual</h1>
-  <p class="agora-greeting" id="agora-greeting"></p>
-
   {{ content }}
 </div>
 
 <style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
+  body{/* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    scrollbar-width: none;-ms-overflow-style: none;overflow-y: auto;
   }
-
+  
   .agora-bg {
     position: fixed;
     inset: 0;
@@ -48,8 +47,7 @@ hide_chrome: true
   }
 
   .home {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,50 +55,14 @@ hide_chrome: true
     text-align: center;
     position: relative;
     z-index: 1;
-    box-sizing: border-box;
-    padding: 2rem;
   }
 
   .agora-title {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 2.8rem;
-    margin: 0 0 0.5rem;
-  }
-
-  .agora-greeting {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
-    color: #666;
-    margin: 0;
+    margin: 0 0 1rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
     .agora-bg { animation: none; }
   }
 </style>
-
-<script>
-  const el = document.getElementById('agora-greeting');
-  if (el) {
-    const ahora = new Date();
-    const mes = ahora.getMonth() + 1; // 1-12
-    const dia = ahora.getDate();
-    const hora = ahora.getHours();
-
-    let mensaje;
-
-    if (mes === 12 && dia === 25) {
-      mensaje = "Feliz Navidad";
-    } else if (mes === 1 && dia === 1) {
-      mensaje = "Feliz Año Nuevo";
-    } else if (hora >= 6 && hora < 12) {
-      mensaje = "Buenos días";
-    } else if (hora >= 12 && hora < 20) {
-      mensaje = "Buenas tardes";
-    } else {
-      mensaje = "Buenas noches";
-    }
-
-    el.textContent = mensaje;
-  }
-</script>
